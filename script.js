@@ -1,0 +1,33 @@
+let display=document.getElementById("display");
+
+function append(value){
+display.value+=value;
+}
+
+function clearDisplay(){
+display.value="";
+}
+
+function deleteLast(){
+display.value=display.value.slice(0,-1);
+}
+
+function calculate(){
+try{
+display.value=eval(display.value);
+}
+catch{
+display.value="Error";
+}
+}
+
+document.addEventListener("keydown",(e)=>{
+if("0123456789+-*/.".include(e.key))
+display.value+=e.key;
+
+if(e.key==="Enter")
+calculator();
+
+if(e.key==="Backspace")
+deleteLast();
+});
